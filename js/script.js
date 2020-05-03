@@ -18,17 +18,22 @@ T-Shirt Section
 ***/
 
 const designSelect = document.querySelector('#design');
+const colorSelect = document.querySelector('#color');
+const defaultColor = document.createElement('option');
 
 //Update the “Color” field to read “Please select a T-shirt theme”
-const colorSelect = document.querySelector('#color');
+defaultColor.text = 'Please select a T-shirt theme';
+colorSelect.appendChild(defaultColor);
+defaultColor.selected = true;
+
 for (let i=0; i<colorSelect.length; i+=1){
     colorSelect.options[i].hidden = 'true'; 
 }
 
-//console.log(colorSelect.length);
-const defaultColor = document.createElement('option');
-defaultColor.text = 'Please select a T-shirt theme';
-console.log(defaultColor);
+
+
+
+
 
 
 

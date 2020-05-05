@@ -31,25 +31,35 @@ for (let i=0; i<colorSelect.length; i+=1){
 }
 
 // Design Menu
-designSelect.options[1].selected = true; //
-designSelect.options[0].hidden = 'true'; // Hides 'Select a theme'
+designSelect.options[0].selected = true; //
+
 
 const jsPun = designSelect.options[1];
 const loveJs = designSelect.options[2];
 
-designSelect.addEventListener
-
-if (jsPun.selected == true){
-    alert('jsPun');
-} elseif (loveJs.selected == true){
-    (loveJs.selected == true)
-}
+designSelect.addEventListener('change', (e) => {
+    designSelect.options[0].hidden = 'true'; // Hides 'Select a theme'
     
+    const jsPunColors = colorSelect.options.slice(0, 2);
+    console.log(jsPunColors); 
 
+    if (jsPun.selected == true){
+        //alert('jsPun');
+        defaultColor.selected = false;
+        colorSelect.options[0].selected = true;
+        colorSelect.options[1].hidden ='';
+        colorSelect.options[2].hidden ='';
 
+    }
 
+    if (loveJs.selected == true){
+        defaultColor.selected = false;
+        colorSelect.options[3].selected = true;
 
+    }
 
+})
 
+ 
 
 

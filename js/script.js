@@ -30,6 +30,22 @@ for (let i=0; i<colorSelect.length; i+=1){
     colorSelect.options[i].hidden = 'true'; 
 }
 
+// Design Menu
+designSelect.options[1].selected = true; //
+designSelect.options[0].hidden = 'true'; // Hides 'Select a theme'
+
+const jsPun = designSelect.options[1];
+const loveJs = designSelect.options[2];
+
+designSelect.addEventListener
+
+if (jsPun.selected == true){
+    alert('jsPun');
+} elseif (loveJs.selected == true){
+    (loveJs.selected == true)
+}
+    
+
 
 
 

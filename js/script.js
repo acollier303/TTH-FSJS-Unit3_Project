@@ -90,27 +90,24 @@ runningTotal.setAttribute('value', `Total: $ ${totalCost}`);
 document.querySelector('.activities').addEventListener('change', (e) => {
 
     const clicked = e.target;
-    const clickedDate = clicked.getAttribute('data-day-and-time'); 
-    let clickedCost = clicked.getAttribute('data-cost');
+    const clickedDate = clicked.getAttribute('data-day-and-time');//stores the date of the current item clicked 
+    const clickedCost = clicked.getAttribute('data-cost');//stores the cost of the current item clicked
     //clickedCost = parseInt(clickedCost.textContent);
-    console.log(clickedCost.textContent);
-    let totalCost = '';
-    
+    let totalCost = parseInt(clickedCost);
+     
     for (let i=0; i<checkboxes.length; i+=1){
 
-        const  checkboxDate = checkboxes[i].getAttribute('data-day-and-time');
-        if (clickedDate === checkboxDate && checkboxDate !== checkboxes[i]){
+        if(clickedDate === checkboxDate && clicked != checkboxes[i]){
             if (clicked.checked){
-                checkboxes[i].disabled = 'true';
-                totalCost = totalCost + clickedCost;
-                parseInt(totalCost);
+                checkboxes[i].disabled = 'false';
                 console.log(totalCost);
+
             } else {
                 checkboxes[i].disabled = 'false';
-               
             }
-        }
+        }    
     }
+    
 });
 
 

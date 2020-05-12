@@ -39,7 +39,7 @@ const loveJs = designSelect.options[2];
 // Design Menu Event Listener
 designSelect.addEventListener('change', (e) => {
     designSelect.options[0].hidden = 'true'; // Hides 'Select a theme'
-    colorSelect.options[0].hidden = 'ture';
+    colorSelect.options[0].hidden = 'true';
     
     // jsPun selection
     if (jsPun.selected == true){
@@ -118,5 +118,36 @@ document.querySelector('.activities').addEventListener('change', (e) => {
     }
 });
 
+/******************
+Payment Section
+*******************/
+const paymentSelect = document.getElementById('payment');
+const creditCardDiv = document.getElementById('credit-card');
+const payPalDiv = document.getElementById('paypal');
+const bitcoin = document.getElementById('bitcoin');
 
+paymentSelect.options[1].selected = true;
+
+//Payment Event Listener
+paymentSelect.addEventListener('change', (e) =>{
+    console.log('Listner Functional')
+    if (paymentSelect.options[1].selected == true){
+        console.log('credit card');
+        creditCardDiv.style.display = '';
+        payPalDiv.style.display = 'none';
+        bitcoin.style.display = 'none';
+    }
+    if (paymentSelect.options[2].selected == true){
+        console.log('Pay Pal');
+        creditCardDiv.style.display = 'none';
+        payPalDiv.style.display = '';
+        bitcoin.style.display = 'none';
+    }
+    if (paymentSelect.options[3].selected == true){
+        console.log('bitcoin');
+        creditCardDiv.style.display = 'none';
+        payPalDiv.style.display = 'none';
+        bitcoin.style.display = '';
+    }
+})
 

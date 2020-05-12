@@ -92,15 +92,19 @@ document.querySelector('.activities').addEventListener('change', (e) => {
     const clicked = e.target;
     const clickedDate = clicked.getAttribute('data-day-and-time');//stores the date of the current item clicked 
     const clickedCost = clicked.getAttribute('data-cost');//stores the cost of the current item clicked
-    //totalCost += +clickedCost ;
-    runningTotal.setAttribute('value', `Total: $ ${totalCost}`);
+    
 
-    if (clicked.checked){
-        totalCost +=  +clickedCost;
+     if (clicked.checked){
+        totalCost += +clickedCost;
+        runningTotal.setAttribute('value', `Total: $ ${totalCost}`);
+        console.log(`Total Cost: ${totalCost}`)
     } else {
         totalCost -= +clickedCost;
-    }
+        runningTotal.setAttribute('value', `Total: $ ${totalCost}`);
+        console.log(`Total Cost: ${totalCost}`)
+    } 
 
+    //Checkbox Loop: Checks for activity date conflicts.
     for (let i=0; i<checkboxes.length; i+=1){
         const checkboxDate = checkboxes[i].getAttribute('data-day-and-time');
 

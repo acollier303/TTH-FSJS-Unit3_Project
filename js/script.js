@@ -132,22 +132,55 @@ paymentSelect.options[1].selected = true;
 paymentSelect.addEventListener('change', (e) =>{
     console.log('Listner Functional')
     if (paymentSelect.options[1].selected == true){
-        console.log('credit card');
+        //console.log('credit card');
         creditCardDiv.style.display = '';
         payPalDiv.style.display = 'none';
         bitcoin.style.display = 'none';
     }
     if (paymentSelect.options[2].selected == true){
-        console.log('Pay Pal');
+        //console.log('Pay Pal');
         creditCardDiv.style.display = 'none';
         payPalDiv.style.display = '';
         bitcoin.style.display = 'none';
     }
     if (paymentSelect.options[3].selected == true){
-        console.log('bitcoin');
+        //console.log('bitcoin');
         creditCardDiv.style.display = 'none';
         payPalDiv.style.display = 'none';
         bitcoin.style.display = '';
     }
-})
+});
 
+/**********************
+ Validation Functions
+ *********************/
+
+ //---Name Validator ---
+const name = document.getElementById('name');
+const form = document.querySelector('form');
+console.log(form);
+
+const nameValidator = () => {
+    const userName = name.value;
+
+    if(userName > 0){
+        name.style.borderColor = 'white'
+        return true;
+    } else {
+        name.style.borderColor = 'red'
+        return false    ;
+    }
+};
+
+//--- Email Validator ---
+const email = document.getElementById('mail');
+
+
+/**********************
+ Submit Handler
+ *********************/
+
+ form.addEventListener('submit', (e) =>{
+    nameValidator();
+    console.log('Submit Handler is working');
+ })

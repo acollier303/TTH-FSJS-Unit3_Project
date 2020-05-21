@@ -183,4 +183,5 @@ const email = document.getElementById('mail');
  form.addEventListener('submit', (e) =>{
     nameValidator();
     console.log('Submit Handler is working');
- })
+    e.preventDefault();
+ });

@@ -174,6 +174,18 @@ const nameValidator = () => {
 
 //--- Email Validator ---
 const email = document.getElementById('mail');
+const regexEmail = /^[^@]+@[^@.]+\.[a-z]+$/i ;
+const emailValidator = () => {
+    const userEmail = email.value;
+    emailValid = regexEmail.test(userEmail);
+    console.log(emailValid);
+    if (emailValid) {
+        
+    } else {
+        alert("Please enter a valid email");
+    }
+
+}
 
 
 /**********************
@@ -182,6 +194,8 @@ const email = document.getElementById('mail');
 
  form.addEventListener('submit', (e) =>{
     nameValidator();
+    emailValidator();
     console.log('Submit Handler is working');
     e.preventDefault();
  });
+

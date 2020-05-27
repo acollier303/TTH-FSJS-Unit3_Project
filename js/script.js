@@ -168,7 +168,9 @@ const nameValidator = () => {
         return true;
     } else {
         name.style.borderColor = 'red'
-        return false    ;
+        document.getElementById('name').innerHTML = 'Can not be left blank';
+        return false;
+        
     }
 };
 
@@ -179,12 +181,12 @@ const regexEmail = /^[^@]+@[^@.]+\.[a-z]+$/i ;
 const emailValidator = () => {
     const userEmail = email.value;
     const emailValid = regexEmail.test(userEmail);
-    //console.log(emailValid);
+    
     if (emailValid) {
         email.style.borderColor = 'white';
     } else {
         email.style.borderColor = 'red';
-        alert("Please enter a valid email");
+        
     }
 
 }
@@ -234,6 +236,14 @@ const creditCardValidator = () => {
 
     
 }
+
+/**********************
+ Error Message functions
+ *********************/
+
+
+
+ 
 
 /**********************
  Submit Handler

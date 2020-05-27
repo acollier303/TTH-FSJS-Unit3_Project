@@ -163,7 +163,7 @@ console.log(form);
 const nameValidator = () => {
     const userName = name.value;
 
-    if(userName > 0){
+    if(userName.length > 0){
         name.style.borderColor = 'white'
         return true;
     } else {
@@ -175,18 +175,65 @@ const nameValidator = () => {
 //--- Email Validator ---
 const email = document.getElementById('mail');
 const regexEmail = /^[^@]+@[^@.]+\.[a-z]+$/i ;
+
 const emailValidator = () => {
     const userEmail = email.value;
-    emailValid = regexEmail.test(userEmail);
-    console.log(emailValid);
+    const emailValid = regexEmail.test(userEmail);
+    //console.log(emailValid);
     if (emailValid) {
-        
+        email.style.borderColor = 'white';
     } else {
+        email.style.borderColor = 'red';
         alert("Please enter a valid email");
     }
 
 }
 
+//--- Payment Validator ---
+const creditCardNum = document.getElementById('cc-num');
+const zipCode = document.getElementById('zip');
+const cvv = document.getElementById('cvv');
+const regexCreditCard = /^[0-9]{13,16}$/;
+const regexZip = /^[0-9]{5}$/;
+const regexCvv = /^[0-9]{3}$/;
+
+const creditCardValidator = () => {
+    const creditCardValid = regexCreditCard.test(creditCardNum.value);
+    const zipCodeValid = regexZip.test(zipCode.value);
+    const cvvValid = regexCvv.test(cvv.value);
+ 
+        //**Functionality Logs**
+        console.log(`Credit Card Number: ${creditCardNum.value}`);
+        console.log(`credit Card Valid?: ${creditCardValid}`);
+        console.log(`Zip Cod Valid?: ${zipCodeValid}`);
+        console.log(`CCV number Valid?: ${cvvValid}`);
+    
+    
+    // Credit Card Number Valid?
+    if (creditCardValid) {
+        creditCardNum.style.borderColor = 'white';
+    } else {
+        creditCardNum.style.borderColor = 'red';
+    }
+
+     // zipCode Valid?
+     if (zipCodeValid) {
+        zipCode.style.borderColor = 'white';
+    } else {
+        zipCode.style.borderColor = 'red';
+    }
+
+     // CVV Valid?
+     if (cvvValid) {
+        cvv.style.borderColor = 'white';
+    } else {
+        cvv.style.borderColor = 'red';
+    }
+  
+    
+
+    
+}
 
 /**********************
  Submit Handler
@@ -195,6 +242,7 @@ const emailValidator = () => {
  form.addEventListener('submit', (e) =>{
     nameValidator();
     emailValidator();
+    creditCardValidator();
     console.log('Submit Handler is working');
     e.preventDefault();
  });

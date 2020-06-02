@@ -168,9 +168,11 @@ const nameValidator = () => {
         return true;
     } else {
         name.style.borderColor = 'red'
-        document.getElementById('name').innerHTML = 'Can not be left blank';
+        //create Error DOM element
+        const nameError = document.createElement('P')
+        nameError.innerHTML= 'Name can not be left blank';
+        form.appendChild(nameError);
         return false;
-        
     }
 };
 
@@ -189,6 +191,15 @@ const emailValidator = () => {
         
     }
 
+}
+
+//--- Activities Validator ---
+const activityValidator = () => {
+    for (let i=0; i<checkboxes.length; i+=1){
+        if (checkboxes[i].checked = false) {
+            checkboxes[i].style.borderColor ='red';
+        }
+    }
 }
 
 //--- Payment Validator ---
@@ -216,6 +227,7 @@ const creditCardValidator = () => {
         creditCardNum.style.borderColor = 'white';
     } else {
         creditCardNum.style.borderColor = 'red';
+
     }
 
      // zipCode Valid?

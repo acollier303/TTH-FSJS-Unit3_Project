@@ -155,10 +155,17 @@ paymentSelect.addEventListener('change', (e) =>{
  Validation Functions
  *********************/
 
+//create tool tip
+const toolTipCreate = () => {
+const toolTipWrap = document.createElement('div');
+toolTipWrap.className ='tooltip';
+toolTipWrap.appendChild(document.createElement('p'));
+};
+
  //---Name Validator ---
 const name = document.getElementById('name');
 const form = document.querySelector('form');
-console.log(form);
+ 
 
 const nameValidator = () => {
     const userName = name.value;
@@ -168,13 +175,13 @@ const nameValidator = () => {
         return true;
     } else {
         name.style.borderColor = 'red'
-        //create Error DOM element
-        const nameError = document.createElement('P')
-        nameError.innerHTML= 'Name can not be left blank';
-        form.appendChild(nameError);
-        return false;
+        const nameError = document.createElement('p');
+        nameError.textContent = 'Can not be left blank';
+        form.prepend(nameError);
+        console.log(nameError);
+        return false; 
     }
-};
+}
 
 //--- Email Validator ---
 const email = document.getElementById('mail');
@@ -268,4 +275,3 @@ const creditCardValidator = () => {
     console.log('Submit Handler is working');
     e.preventDefault();
  });
-

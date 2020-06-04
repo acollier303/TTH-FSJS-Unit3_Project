@@ -214,3 +214,11 @@ option {
 		clear: both;
 	}
 }
+
+/*---------
+Custom Styles
+-----------*/
+
+.tooltip-red {
+	--balloon-color: red;
+  }

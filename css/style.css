@@ -219,6 +219,6 @@ option {
 Custom Styles
 -----------*/
 
-.tooltip-red {
-	--balloon-color: red;
-  }
+.textError {
+	color: red;
+}

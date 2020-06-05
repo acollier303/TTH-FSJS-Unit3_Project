@@ -155,30 +155,24 @@ paymentSelect.addEventListener('change', (e) =>{
  Validation Functions
  *********************/
 
-//create tool tip
-const toolTipCreate = () => {
-const toolTipWrap = document.createElement('div');
-toolTipWrap.className ='tooltip';
-toolTipWrap.appendChild(document.createElement('p'));
-};
-
  //---Name Validator ---
 const name = document.getElementById('name');
 const form = document.querySelector('form');
- 
+const nameError = document.createElement('p');
+nameError.textContent = '* Name can not be left blank.'
+nameError.classList.add('textError');
+
 
 const nameValidator = () => {
     const userName = name.value;
 
     if(userName.length > 0){
         name.style.borderColor = 'white'
+        nameError.textContent= '';
         return true;
     } else {
         name.style.borderColor = 'red'
-        const nameError = document.createElement('p');
-        nameError.textContent = 'Can not be left blank';
         form.prepend(nameError);
-        console.log(nameError);
         return false; 
     }
 }
@@ -201,13 +195,13 @@ const emailValidator = () => {
 }
 
 //--- Activities Validator ---
-const activityValidator = () => {
+/* const activityValidator = () => {
     for (let i=0; i<checkboxes.length; i+=1){
         if (checkboxes[i].checked = false) {
             checkboxes[i].style.borderColor ='red';
         }
     }
-}
+} */
 
 //--- Payment Validator ---
 const creditCardNum = document.getElementById('cc-num');
@@ -257,14 +251,6 @@ const creditCardValidator = () => {
 }
 
 /**********************
- Error Message functions
- *********************/
-
-
-
- 
-
-/**********************
  Submit Handler
  *********************/
 
@@ -272,6 +258,6 @@ const creditCardValidator = () => {
     nameValidator();
     emailValidator();
     creditCardValidator();
-    console.log('Submit Handler is working');
+    //activityValidator();
     e.preventDefault();
  });

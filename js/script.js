@@ -31,36 +31,33 @@ form.prepend(errorDiv);
 errorDiv.appendChild(errorList);
 //Name Error
 errorList.appendChild(nameError);
-nameError.textContent = 'Name can not be blank';
+nameError.textContent = 'Name can not be blank.';
 nameError.style.display = 'none';
 
 //Email Error
 errorList.appendChild(emailError);
-emailError.textContent  = 'Please enter a valid email';
+emailError.textContent  = 'Please enter a valid email address.';
 emailError.style.display = 'none';
 
 //Activity Error
 errorList.appendChild(activityError);
-activityError.textContent = 'Please choose atleast 1 activity.';
+activityError.textContent = 'Please choose at least ONE activity.';
 activityError.style.display = 'none';
 
 //Credit Card Number Error
 errorList.appendChild(creditCardError);
-creditCardError.textContent = 'Please enter a valid Credit Card Number';
+creditCardError.textContent = 'Please enter a valid Credit Card Number.';
 creditCardError.style.display = 'none';
 
 //CVV Error
 errorList.appendChild(cvvError);
-cvvError.textContent = 'Please enter a valid CVV';
+cvvError.textContent = 'Please enter a valid CVV number.';
 cvvError.style.display = 'none';
 
 //Zip Code Error
 errorList.appendChild(zipError);
 zipError.textContent = 'Please enter a valid zip code.';
 zipError.style.display = 'none';
-
-console.log(errorList.childNodes);
-
 
 /*********************************************
 T-Shirt Section
@@ -208,7 +205,7 @@ paymentSelect.addEventListener('change', (e) =>{
 
 const nameValidator = () => {
     const userName = name.value;
-    //nameError.classList.add('textError');
+    nameError.classList.add('textError');
 
     if(userName.length > 0){
         name.style.borderColor = 'white';
@@ -224,6 +221,7 @@ const nameValidator = () => {
 //--- Email Validator ---
 const email = document.getElementById('mail');
 const regexEmail = /^[^@]+@[^@.]+\.[a-z]+$/i ;
+emailError.classList.add('textError');
 
 const emailValidator = () => {
     const userEmail = email.value;
@@ -242,18 +240,20 @@ const emailValidator = () => {
 }
 
 //--- Activities Validator ---
-/* const activityValidator = () => {
-    const checkedCount = 0
+const activityValidator = () => {
+    activityError.style.display = 'none';
+    activityError.classList.add('textError');
+    let checkedCount = 0;
     for (let i=0; i<checkboxes.length; i+=1){
-        if (checkboxes[i].checked == false) {
+        if (checkboxes[i].checked) {
             checkedCount += 1;
-            console.log(checkedCount);            
+            
         }
     }
     if (checkedCount == 0){
-        alert('Activities Error');
+        activityError.style.display = '';
     }
-} */ 
+} 
 
 //--- Payment Validator ---
 const creditCardNum = document.getElementById('cc-num');
@@ -267,27 +267,36 @@ const creditCardValidator = () => {
     const creditCardValid = regexCreditCard.test(creditCardNum.value);
     const zipCodeValid = regexZip.test(zipCode.value);
     const cvvValid = regexCvv.test(cvv.value);
+    creditCardError.classList.add('textError');
+    zipError.classList.add('textError');
+    cvvError.classList.add('textError');
  
 // Credit Card Number Valid?
     if (creditCardValid) {
         creditCardNum.style.borderColor = 'white';
+        creditCardError.style.display = 'none';
     } else {
         creditCardNum.style.borderColor = 'red';
+        creditCardError.style.display = '';
 
     }
 
      // zipCode Valid?
      if (zipCodeValid) {
         zipCode.style.borderColor = 'white';
+        zipError.style.display = 'none';
     } else {
         zipCode.style.borderColor = 'red';
+        zipError.style.display = '';
     }
 
      // CVV Valid?
      if (cvvValid) {
-        cvv.style.borderColor = 'white';
+        cvv.style.borderColor = 'white';;
+        cvvError.style.display = 'none'
     } else {
         cvv.style.borderColor = 'red';
+        cvvError.style.display = '';
     }
 }
 
@@ -299,6 +308,7 @@ const creditCardValidator = () => {
     nameValidator();
     emailValidator();
     creditCardValidator();
-    //activityValidator();
+    activityValidator();
+    window.scrollTo(0,0);
     e.preventDefault();
  });

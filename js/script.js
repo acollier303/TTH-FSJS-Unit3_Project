@@ -158,13 +158,14 @@ paymentSelect.addEventListener('change', (e) =>{
  //---Name Validator ---
 const name = document.getElementById('name');
 const form = document.querySelector('form');
-const nameError = document.createElement('p');
-nameError.textContent = '* Name can not be left blank.'
-nameError.classList.add('textError');
+
 
 
 const nameValidator = () => {
     const userName = name.value;
+    const nameError = document.createElement('p');
+    nameError.textContent = '* Name can not be left blank.'
+    nameError.classList.add('textError');
 
     if(userName.length > 0){
         name.style.borderColor = 'white'

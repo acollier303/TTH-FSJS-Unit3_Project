@@ -12,6 +12,55 @@ Job Role Section
 *********************************************/
 document.getElementById('other-title').style.display='none';
 
+/********************************************
+Error Div
+*********************************************/
+const name = document.getElementById('name');
+const form = document.querySelector('form');
+// Creating DOM error elements
+const errorDiv = document.createElement('div');
+const errorList = document.createElement('ul');
+const nameError = document.createElement('li');
+const emailError = document.createElement('li');
+const activityError = document.createElement('li');
+const creditCardError = document.createElement('li');
+const cvvError = document.createElement('li');
+const zipError = document.createElement('li');
+// Append Error Elements to DOM
+form.prepend(errorDiv);
+errorDiv.appendChild(errorList);
+//Name Error
+errorList.appendChild(nameError);
+nameError.textContent = 'Name can not be blank';
+nameError.style.display = 'none';
+
+//Email Error
+errorList.appendChild(emailError);
+emailError.textContent  = 'Please enter a valid email';
+emailError.style.display = 'none';
+
+//Activity Error
+errorList.appendChild(activityError);
+activityError.textContent = 'Please choose atleast 1 activity.';
+activityError.style.display = 'none';
+
+//Credit Card Number Error
+errorList.appendChild(creditCardError);
+creditCardError.textContent = 'Please enter a valid Credit Card Number';
+creditCardError.style.display = 'none';
+
+//CVV Error
+errorList.appendChild(cvvError);
+cvvError.textContent = 'Please enter a valid CVV';
+cvvError.style.display = 'none';
+
+//Zip Code Error
+errorList.appendChild(zipError);
+zipError.textContent = 'Please enter a valid zip code.';
+zipError.style.display = 'none';
+
+console.log(errorList.childNodes);
+
 
 /*********************************************
 T-Shirt Section
@@ -156,24 +205,18 @@ paymentSelect.addEventListener('change', (e) =>{
  **********************************************/
 
  //---Name Validator ---
-const name = document.getElementById('name');
-const form = document.querySelector('form');
-
-
 
 const nameValidator = () => {
     const userName = name.value;
-    const nameError = document.createElement('p');
-    nameError.textContent = '* Name can not be left blank.';
-    nameError.classList.add('textError');
+    //nameError.classList.add('textError');
 
     if(userName.length > 0){
-        name.style.borderColor = 'white'
-        form.removeChild(nameError);
+        name.style.borderColor = 'white';
+        nameError.style.display = 'none';
         return true;
     } else {
         name.style.borderColor = 'red'
-        form.prepend(nameError);
+        nameError.style.display = '';
         return false; 
     }
 }
@@ -188,18 +231,21 @@ const emailValidator = () => {
     
     if (emailValid) {
         email.style.borderColor = 'white';
+        emailError.style.display= 'none';
+        return true;
     } else {
         email.style.borderColor = 'red';
-        
+        emailError.style.display = '';
+        return false;
     }
 
 }
 
 //--- Activities Validator ---
-const activityValidator = () => {
+/* const activityValidator = () => {
     const checkedCount = 0
     for (let i=0; i<checkboxes.length; i+=1){
-        if (checkboxes[i].checked = false) {
+        if (checkboxes[i].checked == false) {
             checkedCount += 1;
             console.log(checkedCount);            
         }
@@ -207,7 +253,7 @@ const activityValidator = () => {
     if (checkedCount == 0){
         alert('Activities Error');
     }
-} 
+} */ 
 
 //--- Payment Validator ---
 const creditCardNum = document.getElementById('cc-num');
@@ -222,7 +268,7 @@ const creditCardValidator = () => {
     const zipCodeValid = regexZip.test(zipCode.value);
     const cvvValid = regexCvv.test(cvv.value);
  
-    // Credit Card Number Valid?
+// Credit Card Number Valid?
     if (creditCardValid) {
         creditCardNum.style.borderColor = 'white';
     } else {
@@ -243,10 +289,6 @@ const creditCardValidator = () => {
     } else {
         cvv.style.borderColor = 'red';
     }
-  
-    
-
-    
 }
 
 /****************************************
@@ -257,6 +299,6 @@ const creditCardValidator = () => {
     nameValidator();
     emailValidator();
     creditCardValidator();
-    activityValidator();
+    //activityValidator();
     e.preventDefault();
  });

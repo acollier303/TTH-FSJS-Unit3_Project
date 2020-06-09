@@ -7,15 +7,15 @@ Adrian Collier
 //Focus on first text field on load
 document.getElementById('name').focus();
 
-/****************
+/********************************************
 Job Role Section
-*****************/
+*********************************************/
 document.getElementById('other-title').style.display='none';
 
 
-/*************
+/*********************************************
 T-Shirt Section
-***************/
+*********************************************/
 const designSelect = document.querySelector('#design');
 const colorSelect = document.querySelector('#color');
 const defaultColor = document.createElement('option');
@@ -74,9 +74,9 @@ designSelect.addEventListener('change', (e) => {
     }; 
 });
 
-/******************
+/**********************************************
  Activities Section
-*******************/ 
+**********************************************/ 
 const checkboxes = document.querySelectorAll('.activities input');
 
 //Add Total input field
@@ -118,9 +118,9 @@ document.querySelector('.activities').addEventListener('change', (e) => {
     }
 });
 
-/******************
+/**************************************************
 Payment Section
-*******************/
+*************************************************/
 const paymentSelect = document.getElementById('payment');
 const creditCardDiv = document.getElementById('credit-card');
 const payPalDiv = document.getElementById('paypal');
@@ -151,9 +151,9 @@ paymentSelect.addEventListener('change', (e) =>{
     }
 });
 
-/**********************
+/***********************************************
  Validation Functions
- *********************/
+ **********************************************/
 
  //---Name Validator ---
 const name = document.getElementById('name');
@@ -249,9 +249,9 @@ const creditCardValidator = () => {
     
 }
 
-/**********************
+/****************************************
  Submit Handler
- *********************/
+ ***************************************/
 
  form.addEventListener('submit', (e) =>{
     nameValidator();

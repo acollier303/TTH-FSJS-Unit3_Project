@@ -164,12 +164,12 @@ const form = document.querySelector('form');
 const nameValidator = () => {
     const userName = name.value;
     const nameError = document.createElement('p');
-    nameError.textContent = '* Name can not be left blank.'
+    nameError.textContent = '* Name can not be left blank.';
     nameError.classList.add('textError');
 
     if(userName.length > 0){
         name.style.borderColor = 'white'
-        nameError.textContent= '';
+        form.removeChild(nameError);
         return true;
     } else {
         name.style.borderColor = 'red'
@@ -196,13 +196,18 @@ const emailValidator = () => {
 }
 
 //--- Activities Validator ---
-/* const activityValidator = () => {
+const activityValidator = () => {
+    const checkedCount = 0
     for (let i=0; i<checkboxes.length; i+=1){
         if (checkboxes[i].checked = false) {
-            checkboxes[i].style.borderColor ='red';
+            checkedCount += 1;
+            console.log(checkedCount);            
         }
     }
-} */
+    if (checkedCount == 0){
+        alert('Activities Error');
+    }
+} 
 
 //--- Payment Validator ---
 const creditCardNum = document.getElementById('cc-num');
@@ -217,13 +222,6 @@ const creditCardValidator = () => {
     const zipCodeValid = regexZip.test(zipCode.value);
     const cvvValid = regexCvv.test(cvv.value);
  
-        //**Functionality Logs**
-        console.log(`Credit Card Number: ${creditCardNum.value}`);
-        console.log(`credit Card Valid?: ${creditCardValid}`);
-        console.log(`Zip Cod Valid?: ${zipCodeValid}`);
-        console.log(`CCV number Valid?: ${cvvValid}`);
-    
-    
     // Credit Card Number Valid?
     if (creditCardValid) {
         creditCardNum.style.borderColor = 'white';
@@ -259,6 +257,6 @@ const creditCardValidator = () => {
     nameValidator();
     emailValidator();
     creditCardValidator();
-    //activityValidator();
+    activityValidator();
     e.preventDefault();
  });

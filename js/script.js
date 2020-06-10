@@ -84,8 +84,9 @@ const loveJs = designSelect.options[2];
 
 // Design Menu Event Listener
 designSelect.addEventListener('change', (e) => {
-    designSelect.options[0].hidden = 'true'; // Hides 'Select a theme'
-    colorSelect.options[0].hidden = 'true';
+    designSelect.options[0].hidden = true; // Hides 'Select a theme'
+    colorSelect.options[0].hidden = true;
+    
     
     // jsPun selection
     if (jsPun.selected == true){
@@ -98,7 +99,7 @@ designSelect.addEventListener('change', (e) => {
                 colorSelect.options[i].hidden = '';
             };
             
-            if (i>3){
+            if (i>3 && i<6){
                 colorSelect.options[i].hidden = 'true';
             };
         };
@@ -113,7 +114,7 @@ designSelect.addEventListener('change', (e) => {
             if (i<3){
                 colorSelect.options[i].hidden = 'true';
             };
-            if (i>3 && i<5){
+            if (i>3 && i<6){
                 colorSelect.options[i].hidden ='';
             };
         };
@@ -176,7 +177,6 @@ paymentSelect.options[1].selected = true;
 
 //Payment Event Listener
 paymentSelect.addEventListener('change', (e) =>{
-    console.log('Listner Functional')
     if (paymentSelect.options[1].selected == true){
         //console.log('credit card');
         creditCardDiv.style.display = '';
@@ -247,8 +247,7 @@ const activityValidator = () => {
     for (let i=0; i<checkboxes.length; i+=1){
         if (checkboxes[i].checked) {
             checkedCount += 1;
-            
-        }
+         }
     }
     if (checkedCount == 0){
         activityError.style.display = '';
@@ -264,39 +263,42 @@ const regexZip = /^[0-9]{5}$/;
 const regexCvv = /^[0-9]{3}$/;
 
 const creditCardValidator = () => {
-    const creditCardValid = regexCreditCard.test(creditCardNum.value);
-    const zipCodeValid = regexZip.test(zipCode.value);
-    const cvvValid = regexCvv.test(cvv.value);
-    creditCardError.classList.add('textError');
-    zipError.classList.add('textError');
-    cvvError.classList.add('textError');
- 
-// Credit Card Number Valid?
-    if (creditCardValid) {
-        creditCardNum.style.borderColor = 'white';
-        creditCardError.style.display = 'none';
-    } else {
-        creditCardNum.style.borderColor = 'red';
-        creditCardError.style.display = '';
+    if (paymentSelect.options[1].selected == true){
+        const creditCardValid = regexCreditCard.test(creditCardNum.value);
+        const zipCodeValid = regexZip.test(zipCode.value);
+        const cvvValid = regexCvv.test(cvv.value);
+        creditCardError.classList.add('textError');
+        zipError.classList.add('textError');
+        cvvError.classList.add('textError');
+    
+    // Credit Card Number Valid?
+        if (creditCardValid) {
+            creditCardNum.style.borderColor = 'white';
+            creditCardError.style.display = 'none';
 
-    }
+        } else {
+            creditCardNum.style.borderColor = 'red';
+            creditCardError.style.display = '';
 
-     // zipCode Valid?
-     if (zipCodeValid) {
-        zipCode.style.borderColor = 'white';
-        zipError.style.display = 'none';
-    } else {
-        zipCode.style.borderColor = 'red';
-        zipError.style.display = '';
-    }
+        }
 
-     // CVV Valid?
-     if (cvvValid) {
-        cvv.style.borderColor = 'white';;
-        cvvError.style.display = 'none'
-    } else {
-        cvv.style.borderColor = 'red';
-        cvvError.style.display = '';
+        // zipCode Valid?
+        if (zipCodeValid) {
+            zipCode.style.borderColor = 'white';
+            zipError.style.display = 'none';
+        } else {
+            zipCode.style.borderColor = 'red';
+            zipError.style.display = '';
+        }
+
+        // CVV Valid?
+        if (cvvValid) {
+            cvv.style.borderColor = 'white';
+            cvvError.style.display = 'none'
+        } else {
+            cvv.style.borderColor = 'red';
+            cvvError.style.display = '';
+        }
     }
 }
 

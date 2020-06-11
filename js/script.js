@@ -267,6 +267,7 @@ const creditCardValidator = () => {
         const creditCardValid = regexCreditCard.test(creditCardNum.value);
         const zipCodeValid = regexZip.test(zipCode.value);
         const cvvValid = regexCvv.test(cvv.value);
+        let pass = 0;    
         creditCardError.classList.add('textError');
         zipError.classList.add('textError');
         cvvError.classList.add('textError');
@@ -275,17 +276,19 @@ const creditCardValidator = () => {
         if (creditCardValid) {
             creditCardNum.style.borderColor = 'white';
             creditCardError.style.display = 'none';
+            pass += 1;
 
         } else {
             creditCardNum.style.borderColor = 'red';
             creditCardError.style.display = '';
-
         }
 
         // zipCode Valid?
         if (zipCodeValid) {
             zipCode.style.borderColor = 'white';
             zipError.style.display = 'none';
+            pass += 1;
+
         } else {
             zipCode.style.borderColor = 'red';
             zipError.style.display = '';
@@ -295,22 +298,45 @@ const creditCardValidator = () => {
         if (cvvValid) {
             cvv.style.borderColor = 'white';
             cvvError.style.display = 'none'
+            pass += 1;
+
         } else {
             cvv.style.borderColor = 'red';
             cvvError.style.display = '';
         }
+        console.log(pass);
+        if (pass == 0){
+            return false;
+        }
     }
-}
 
+}
+    
 /****************************************
  Submit Handler
  ***************************************/
 
  form.addEventListener('submit', (e) =>{
     nameValidator();
+    if (!nameValidator()){
+        e.preventDefault();
+        window.scrollTo(0,0);
+    }
+
     emailValidator();
-    creditCardValidator();
+    if (!emailValidator()){
+        e.preventDefault();
+        window.scrollTo(0,0);
+    };
+    if (paymentSelect.options[1].selected){
+        creditCardValidator();;
+        if(!creditCardValidator()){
+            e.preventDefault()
+            window.scrollTo(0,0);
+        }
+    }   
     activityValidator();
-    window.scrollTo(0,0);
-    e.preventDefault();
+    if (!activityValidator())
+        e.preventDefault
+        window.scrollTo(0,0);
  });

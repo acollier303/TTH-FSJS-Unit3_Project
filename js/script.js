@@ -10,7 +10,20 @@ document.getElementById('name').focus();
 /********************************************
 Job Role Section
 *********************************************/
-document.getElementById('other-title').style.display='none';
+
+const jobRole = document.getElementById('title');
+const other = document.getElementById('other-title');
+other.style.display='none';
+
+//Other job role event listner
+jobRole.addEventListener('change', (e) => {
+    if (jobRole.options[5].selected){
+        other.style.display = '';
+    }else{
+        other.style.display ='none'
+    }
+});
+
 
 /********************************************
 Error Div
@@ -174,6 +187,8 @@ const payPalDiv = document.getElementById('paypal');
 const bitcoin = document.getElementById('bitcoin');
 
 paymentSelect.options[1].selected = true;
+payPalDiv.style.display = 'none';
+bitcoin.style.display = 'none';
 
 //Payment Event Listener
 paymentSelect.addEventListener('change', (e) =>{
@@ -249,8 +264,12 @@ const activityValidator = () => {
             checkedCount += 1;
          }
     }
-    if (checkedCount == 0){
+    if (checkedCount === 0){
         activityError.style.display = '';
+        return false;
+    }
+    if (checkedCount > 0){
+        return true;
     }
 } 
 
@@ -305,9 +324,16 @@ const creditCardValidator = () => {
             cvvError.style.display = '';
         }
         console.log(pass);
-        if (pass == 0){
+        if (pass === 0){
             return false;
+        } else {
+            creditCardError.style.display = 'none';
+            zipError.style.display = 'none';
+            cvvError.style.display = 'none';
+            return true;
         }
+    } else {
+        return true;
     }
 
 }
@@ -328,15 +354,22 @@ const creditCardValidator = () => {
         e.preventDefault();
         window.scrollTo(0,0);
     };
+
+    activityValidator();
+    if (!activityValidator()){
+        e.preventDefault
+        window.scrollTo(0,0);
+    };
+
     if (paymentSelect.options[1].selected){
-        creditCardValidator();;
+        creditCardValidator();
         if(!creditCardValidator()){
             e.preventDefault()
             window.scrollTo(0,0);
         }
-    }   
-    activityValidator();
-    if (!activityValidator())
-        e.preventDefault
-        window.scrollTo(0,0);
+    } else {
+        creditCardError.style.display = 'none';
+        zipError.style.display = 'none';
+        cvvError.style.display = 'none';
+    }
  });

@@ -357,7 +357,7 @@ const creditCardValidator = () => {
 
     activityValidator();
     if (!activityValidator()){
-        e.preventDefault
+        e.preventDefault()
         window.scrollTo(0,0);
     };
 

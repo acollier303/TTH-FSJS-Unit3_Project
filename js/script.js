@@ -157,11 +157,9 @@ document.querySelector('.activities').addEventListener('change', (e) => {
      if (clicked.checked){
         totalCost += +clickedCost;
         runningTotal.setAttribute('value', `Total: $ ${totalCost}`);
-        console.log(`Total Cost: ${totalCost}`)
     } else {
         totalCost -= +clickedCost;
         runningTotal.setAttribute('value', `Total: $ ${totalCost}`);
-        console.log(`Total Cost: ${totalCost}`)
     } 
 
     //Checkbox Loop: Checks for activity date conflicts.
@@ -323,7 +321,7 @@ const creditCardValidator = () => {
             cvv.style.borderColor = 'red';
             cvvError.style.display = '';
         }
-        console.log(pass);
+
         if (pass === 0){
             return false;
         } else {

@@ -322,7 +322,7 @@ const creditCardValidator = () => {
             cvvError.style.display = '';
         }
 
-        if (pass === 0){
+        if (pass < 3){
             return false;
         } else {
             creditCardError.style.display = 'none';
